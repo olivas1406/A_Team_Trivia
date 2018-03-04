@@ -33,20 +33,30 @@ h1 {
 .timer {
     color: black;
     text-align: center;
-    font-size: 26px;
+    font-size: 70px;
 }
 
 .ques {
+    font-size: 35px;
     text-align: center;
-    background: yellow;
-    color: white;
+    background: blue;
 }
 
 .ans {
     text-align: center;
-    background: blue;
-    color: white;
+    background: yellow;
+    font-size: 20px;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
