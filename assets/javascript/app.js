@@ -21,8 +21,8 @@ $(document).ready(function(){
                 if (count === 0) {                          // if the count gets to 0
                 clearInterval(counter);                     // clear the interval
                 $(".timer").html("<h2>Time's Up!</h2>");    // push 'time's up' to the HTML
-                $(".ques").html("");                        // remove the question from the HTML
-                $(".ans").html("");                         // remove the answers from the HTML
+                $(".ques").empty();         //.html("");                        // remove the question from the HTML
+                $(".ans").empty();          //.html("");                         // remove the answers from the HTML
                 correctAns();                               // call the correctAns function to show correct answer                                      
             //   return;
                 }
@@ -34,13 +34,38 @@ $(document).ready(function(){
         }
     }
 
+
+
+
+
     function createWords() {
         $(".ques").html("<h2>The question goes here</h2>");
         $(".text1").html("<h4>Answer 1 goes here</h4>");
+        $(".text1").on("click", function() {
+            correctAns();
+        $(".timer").empty();
+
+            
+        });
+
+        
+
         $(".text2").html("<h4>Answer 2 goes here</h4>"); 
+        $(".text2").on("click", function() {
+            alert("you clicked on answer 2")
+        });
         $(".text3").html("<h4>Answer 3 goes here</h4>");
+        $(".text3").on("click", function() {
+            alert("you clicked on answer 3")
+        });
         $(".text4").html("<h4>Answer 4 goes here</h4>"); 
+        $(".text4").on("click", function() {
+            alert("you clicked on answer 4")
+        });
     }
+
+
+
 
     function gameOn() {                                                                         // calls countdown and words
         questNum++;                                 // increment var questNum by 1
@@ -58,7 +83,7 @@ $(document).ready(function(){
                 clearInterval(counter);     
                 nextScreen();
                 }
-                $(".timer").html("");
+            $(".timer").empty();
             $(".texty").append(".ques").html("------------------------ The correct answer goes here ----------------------")
             $(".texty").css({
                 "margin-top" : "5%",
