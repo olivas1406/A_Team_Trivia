@@ -3,8 +3,18 @@
 
 
 
+var ans1 = toString($("input[name=radioButtonA]:checked").val());
+
+//var ans2 = $("input[name=radioButtonB]").val()
+//var ans3 = $("input[name=radioButtonC]").val()
+//var ans4 = $("input[name=radioButtonD]").val()
+
+
+
 $(document).ready(function(){ 
     
+
+
     function timeMe() {
         $(".startB").empty();
         $(".container").css("height", "900px");
@@ -19,11 +29,18 @@ $(document).ready(function(){
                 }
          //   $(".timer").html(count);
             $("h1").html(count);
-        
         }
     }
 
-  $(".r3c1").hide();                        // hides the questions/answers in the HTML
+        
+
+
+
+
+
+    $(".r3c1").hide();                        // hides the questions/answers in the HTML
+
+
 
     $(".startB").on("click", function() {   // start button
         timeMe();                           // calls the timeMe function
