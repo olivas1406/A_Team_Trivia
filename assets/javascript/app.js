@@ -1,69 +1,113 @@
 
 
-var correctAns = 0;
-var inCorrectAns = 0;
-var unAns = 0;
+    var currQuest = ["this is test question 1", "this is test question 2", "this is test question 3"];
+    var answer1 = ["answer 1-1", "answer 1-2", "answer 1-3"];
+    var answer2 = ["answer 2-1", "answer 2-2", "answer 2-3"];
+    var answer3 = ["answer 3-1", "answer 3-2", "answer 3-3"];
+    var answer4 = ["answer 4-1", "answer 4-2", "answer 4-3"];
+    var unAns = 0;               // variable to hold the number of unanswered questions
+    var corAns = 0;              // variable to hold the number of correclty answered questions
+    var notCorAns = 0;         // variable to hold the number of incorrectly answered questions
+    var ansYes = 1; 
 
 $(document).ready(function(){ 
-    
-
 
     function timeMe() {
-        $(".startB").empty();
-        $(".container").css("height", "900px");
-        var count = 5;                                      // start counting from 30
-        var counter=setInterval(timer, 1000);              // set interval to 1 second
+        var count = 8;                                      // start counting from 30, 8 for testing
+        var counter=setInterval(timer, 1000);               // set interval to 1 second
         function timer() {                                  // timer function
             count = count-1;                                // decrement var count by 1
                 if (count === 0) {                          // if the count gets to 0
                 clearInterval(counter);                     // clearInterval
-                nextScreen();
+                $(".timer").empty();                    // empty the timer div
+                $(".texty").html("Time's up");                      // push 'time's up' to the HTML 
+                $(".ques").empty();                         // empty the ques div
+                $(".ans").empty();                          // empty the ans div
+              
+                correctAns();                               // call the correctAns function
                 }
-            $("h1").html(count);
+            $(".timer").html(count);
         }
-    };
+    }
 
-   function nextScreen() {
-     //   $("h1").html("Time's Up!");
-        $(".r3c1").hide();  
-        $(".score1").html("Correct Answers: " + correctAns).css({
-            "text-align" : "center",
-            "font-size" : "20px",
-            "margin-top" : "5%"
-        });
-        $(".score2").html(" Incorrect Answers: " + inCorrectAns).css({
-            "text-align" : "center",
-            "font-size" : "20px",
-        });
-        $(".score3").html(" Unaswered Questions: " + unAns).css({
-            "text-align" : "center",
-            "font-size" : "20px",
-        });
-        $(".startB").html("<h3>&nbsp; RESTART &nbsp;</h3>");
-        $(".startB").on("click", function() {   // start button
-            timeMe();                           // calls the timeMe function
-            $(".r3c1").show();                // shows the questions/answers in the HTML
-            $(".score1, .score2, .score3").empty();
-            $(".container").css("height", "747px");
-
-        })
-    };
-
+    function askMe() {                                      // function to populate the questions/answers to the HTML
+        $(".ques").html(currQuest[0]);
+        $(".text1").html(answer1[0]);
+        $(".text2").html(answer2[0]);
+        $(".text3").html(answer3[0]);
+        $(".text4").html(answer4[0]);
         
+    }
 
-    $(".r3c1").hide();                        // hides the questions/answers in the HTML
 
-    $(".startB").on("click", function() {   // start button
-        timeMe();                           // calls the timeMe function
-        $(".r3c1").toggle();                // shows the questions/answers in the HTML
+    function correctAns() {
+        $(".ques").html("correct answer goes here");
+        var count = 6;                                      // start counting from 30, 8 for testing
+        var counter=setInterval(timer, 1000);               // set interval to 1 second
+        function timer() {                                  // timer function
+            count = count-1;                                // decrement var count by 1
+                if (count === 0) {                          // if the count gets to 0
+                clearInterval(counter);                     // clearInterval
+                $(".ques").empty();
+                $(".timer").empty();
+                timeMe();
+                $(this).delay(999).queue(askMe);
+                }
+                if (ansYes === 0) {
+                    notCorAns++;
+                } else if (ansYes === 1) {
+                    corAns++;
+                } else {
+                    unAns++;
+                }
+        }
+    }
     
+    $(".text1").on("click", function() {   // answer 1 button
+        ansYes = 0;
+        correctAns();
+        clearInterval(counter);                     // clearInterval 
+        $(".timer").empty();                       // empty the timer div
+        $(".ans").empty();                          // empty the ans div
+
+    });
+
+    $(".text2").on("click", function() {   // answer 1 button
+        ansYes = 1;
+        correctAns();
+        clearInterval(counter);                     // clearInterval 
+        $(".timer").empty();                    // empty the timer div
+        $(".ans").empty();                      // empty the ans div
+    });
+
+    $(".text3").on("click", function() {   // answer 1 button
+        ansYes = 0;
+        correctAns();
+        clearInterval(counter);                     // clearInterval 
+        $(".timer").empty();                       // empty the timer div
+        $(".ans").empty();                        // empty the ans div
+    });
+
+    $(".text4").on("click", function() {   // answer 1 button
+        ansYes = 0;
+        correctAns();
+        clearInterval(counter);                     // clearInterval 
+        $(".timer").empty();                       // empty the timer div
+        $(".ans").empty();                // empty the ans div
     });
 
 
 
 
-});
 
+    $(".startB").on("click", function() {   // start button
+        timeMe();
+        $(this).delay(999).queue(askMe);
+    });
+
+
+
+});
 
 
 
