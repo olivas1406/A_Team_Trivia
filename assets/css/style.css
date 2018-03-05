@@ -39,12 +39,11 @@ h1 {
 .ques {
     font-size: 35px;
     text-align: center;
-    background: blue;
+
 }
 
 .ans {
     text-align: center;
-    background: yellow;
     font-size: 20px;
 }
 
