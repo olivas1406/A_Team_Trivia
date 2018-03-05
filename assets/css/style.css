@@ -1,14 +1,13 @@
 * {
     box-sizing: border-box;
 }
-
+/*
 body {
     background-image: url("../images/bg4.jpg");
 }
-
+*/
 .container {
     border: solid 2px red;
-    background-image: url("../images/bg2.jpg");
     height: 747px;
     padding: 3%;
     margin-top: 1.5%;
@@ -17,7 +16,6 @@ body {
 h1 {
     padding: 4%;
     text-align: center;
-    background-image: url("../images/bg.jpg");
     color: black;
 }
 
