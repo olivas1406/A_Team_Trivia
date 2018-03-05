@@ -25,12 +25,38 @@ $(document).ready(function(){
 
 
 
+/*
+    function htmlShow() {
+        var x = $(".r3c1");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "none";
+        }
+    }
+    */
 
+/*
+    function buttons() {
+    $(".ans").html('<input type="radio" class="radioButtonA" value="answer 1">',
+    '<input type="radio" class="radioButtonB" value="answer 2">',
+    '<input type="radio" class="radioButtonC value="answer 3">',
+    '<input type="radio" class="radioButtonD" value="answer 4">');
+    }
+*/
+
+
+
+
+  $(".r3c1").hide();                        // hides the questions/answers in the HTML
 
     $(".startB").on("click", function() {   // start button
-        timeMe();
-        $(this).delay(999).queue(askMe);
+        timeMe();                           // calls the timeMe function
+        $(".r3c1").toggle();                // shows the questions/answers in the HTML
+    
     });
+
+
 
 
 
