@@ -1,5 +1,13 @@
 
 
+
+ var currQuest = ["hold", "hold", "hold", "this is question 1", "this is question 2", "this is question 3", "this is question 4", "this is question 5", "this is question 6", "this is question 7", "this is question 8"];
+ var answer1 = ["hold", "hold", "hold", "answer 1 1", "answer 1 2", "answer 1 3", "answer 1 4", "answer 1 5", "answer 1 6", "answer 1 7", "answer 1 8"];
+ var answer2 = ["hold", "hold", "hold", "answer 2 1", "answer 2 2", "answer 2 3", "answer 2 4", "answer 2 5", "answer 2 6", "answer 2 7", "answer 2 8"];
+ var answer3 = ["hold", "hold", "hold", "answer 3 1", "answer 3 2", "answer 3 3", "answer 3 4", "answer 3 5", "answer 3 6", "answer 3 7", "answer 3 8"];
+ var answer4 = ["hold", "hold", "hold", "answer 4 1", "answer 4 2", "answer 4 3", "answer 4 4", "answer 4 5", "answer 4 6", "answer 4 7", "answer 4 8"];
+
+
 var unAns = 0;               // variable to hold the number of unanswered questions
 var corAns = 0;              // variable to hold the number of correclty answered questions
 var notCorAns = 0;         // variable to hold the number of incorrectly answered questions
@@ -23,11 +31,33 @@ $(document).ready(function(){
         }
     };
 
+    
+         
+    
+
     function timedOut() {
         trackQ++;
         unAns++;
         $(".ques").html("Time's Up!");
-        $(".ans1").html("correct answer goes here");
+        if (trackQ === 3) {
+            $(".ans1").html("The Correct Answer is " + answer1[6]);
+        } else if (trackQ === 4) {
+            $(".ans1").html("The Correct Answer is " + answer1[9]);
+        } else if (trackQ === 5) {
+            $(".ans1").html("The Correct Answer is " + answer2[4]);
+        } else if (trackQ === 6) {
+            $(".ans1").html("The Correct Answer is " + answer2[8]);
+        } else if (trackQ === 7) {
+            $(".ans1").html("The Correct Answer is " + answer2[11]);
+        } else if (trackQ === 8) {
+            $(".ans1").html("The Correct Answer is " + answer3[3]);
+        } else if (trackQ === 9) {
+            $(".ans1").html("The Correct Answer is " + answer3[5]);
+        } else if (trackQ === 10) {
+            $(".ans1").html("The Correct Answer is " + answer3[10]);
+        } else if (trackQ === 11) {
+            $(".ans1").html("The Correct Answer is " + answer4[7])
+        }  
         $(".ans2").empty();
         $(".ans3").empty();
         $(".ans4").empty();
@@ -47,7 +77,26 @@ $(document).ready(function(){
 
         function correctAns() {
             trackQ++;
-            $(".ans1").html("correct answer goes here");
+            $(".ques").html("Time's Up!");
+        if (trackQ === 3) {
+            $(".ans1").html("The Correct Answer is " + answer1[6]);
+        } else if (trackQ === 4) {
+            $(".ans1").html("The Correct Answer is " + answer1[9]);
+        } else if (trackQ === 5) {
+            $(".ans1").html("The Correct Answer is " + answer2[4]);
+        } else if (trackQ === 6) {
+            $(".ans1").html("The Correct Answer is " + answer2[8]);
+        } else if (trackQ === 7) {
+            $(".ans1").html("The Correct Answer is " + answer2[11]);
+        } else if (trackQ === 8) {
+            $(".ans1").html("The Correct Answer is " + answer3[3]);
+        } else if (trackQ === 9) {
+            $(".ans1").html("The Correct Answer is " + answer3[5]);
+        } else if (trackQ === 10) {
+            $(".ans1").html("The Correct Answer is " + answer3[10]);
+        } else if (trackQ === 11) {
+            $(".ans1").html("The Correct Answer is " + answer4[7])
+        }  
             $(".ans2").empty();
             $(".ans3").empty();
             $(".ans4").empty();
@@ -70,12 +119,12 @@ $(document).ready(function(){
             };
 
     function askMe() {                                      // function to populate the questions/answers to the HTML
-        var currQuest = ["hold", "hold", "hold", "this is question 1", "this is question 2", "this is question 3", "this is question 4", "this is question 5", "this is question 6", "this is question 7", "this is question 8"];
+    /*    var currQuest = ["hold", "hold", "hold", "this is question 1", "this is question 2", "this is question 3", "this is question 4", "this is question 5", "this is question 6", "this is question 7", "this is question 8"];
         var answer1 = ["hold", "hold", "hold", "answer 1 1", "answer 1 2", "answer 1 3", "answer 1 4", "answer 1 5", "answer 1 6", "answer 1 7", "answer 1 8"];
         var answer2 = ["hold", "hold", "hold", "answer 2 1", "answer 2 2", "answer 2 3", "answer 2 4", "answer 2 5", "answer 2 6", "answer 2 7", "answer 2 8"];
         var answer3 = ["hold", "hold", "hold", "answer 3 1", "answer 3 2", "answer 3 3", "answer 3 4", "answer 3 5", "answer 3 6", "answer 3 7", "answer 3 8"];
         var answer4 = ["hold", "hold", "hold", "answer 4 1", "answer 4 2", "answer 4 3", "answer 4 4", "answer 4 5", "answer 4 6", "answer 4 7", "answer 4 8"];
-        $(".ques").html(JSON.stringify(currQuest[trackQ]))
+    */    $(".ques").html(JSON.stringify(currQuest[trackQ]))
         $(".ans1").html(JSON.stringify(answer1[trackQ]));
         $(".ans2").html(JSON.stringify(answer2[trackQ])); 
         $(".ans3").html(JSON.stringify(answer3[trackQ]));
