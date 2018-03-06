@@ -1,8 +1,5 @@
 
 
-
-
-
 var unAns = 0;               // variable to hold the number of unanswered questions
 var corAns = 0;              // variable to hold the number of correclty answered questions
 var notCorAns = 0;         // variable to hold the number of incorrectly answered questions
@@ -13,7 +10,7 @@ $(document).ready(function(){
 
     function timeMe() {
         console.log(trackQ);
-         count = 2;                                      // start counting from 30, 8 for testing
+         count = 6;                                      // start counting from 30, 8 for testing
          counter=setInterval(timer, 1000);               // set interval to 1 second
         function timer() {                                  // timer function
             count--;                                // decrement var count by 1
@@ -28,17 +25,19 @@ $(document).ready(function(){
 
     function timedOut() {
         trackQ++;
+        unAns++;
         $(".ques").html("Time's Up!");
         $(".ans1").html("correct answer goes here");
         $(".ans2").empty();
         $(".ans3").empty();
         $(".ans4").empty();
         $(".timer").empty();
-        countOut = 6;                                      // start counting from 30, 8 for testing
+        countOut = 3;                                      // start counting from 30, 8 for testing
          counterOut=setInterval(timer, 1000);               // set interval to 1 second
         function timer() {                                  // timer function
             countOut--;                                // decrement var count by 1
                 if (countOut === 0) {                          // if the count gets to 0
+                
                 clearInterval(counterOut); 
                 askMe();
                 timeMe();                    // clearInterval
@@ -48,14 +47,13 @@ $(document).ready(function(){
 
         function correctAns() {
             trackQ++;
-            $(".ques").html("Time's Up!");
             $(".ans1").html("correct answer goes here");
             $(".ans2").empty();
             $(".ans3").empty();
             $(".ans4").empty();
             $(".timer").empty();
             countCor = 6;                                      // start counting from 30, 8 for testing
-             counterCor=setInterval(timer, 1000);               // set interval to 1 second
+            counterCor=setInterval(timer, 1000);               // set interval to 1 second
             function timer() {                                  // timer function
                 countCor--;                                // decrement var count by 1
                     if (countCor === 0) {                          // if the count gets to 0
@@ -64,14 +62,14 @@ $(document).ready(function(){
                     timeMe();                    // clearInterval
                     }        
                 }
+            if (ansYes === 1) {
+                corAns++;
+            } else if (ansYes === 0) {
+                notCorAns++;
+            }
             };
 
-
-
-
-
     function askMe() {                                      // function to populate the questions/answers to the HTML
-        
         var currQuest = ["hold", "hold", "hold", "this is question 1", "this is question 2", "this is question 3", "this is question 4", "this is question 5", "this is question 6", "this is question 7", "this is question 8"];
         var answer1 = ["hold", "hold", "hold", "answer 1 1", "answer 1 2", "answer 1 3", "answer 1 4", "answer 1 5", "answer 1 6", "answer 1 7", "answer 1 8"];
         var answer2 = ["hold", "hold", "hold", "answer 2 1", "answer 2 2", "answer 2 3", "answer 2 4", "answer 2 5", "answer 2 6", "answer 2 7", "answer 2 8"];
@@ -86,18 +84,16 @@ $(document).ready(function(){
             finalScreen();
     };
 
-
-   
-    
-
     function finalScreen() {
         clearInterval(counter);
-        $(".ques").empty();
-        $(".ans1").html("Correct Answers: " + corAns);
-        $(".ans2").html("Incorrect Answers: " + notCorAns);
-        $(".ans3").html("Unanswered Questions: " +unAns);
-        $(".ans4").empty();
-        $(".timer").empty();
+     //   clearInterval(counterOut); 
+    //    clearInterval(counterCor);      
+        $(".ques").remove();             // RE-ADD WITH RESTART BUTTON OR REPLACE DIV
+        $(".ans1").remove();             // RE-ADD WITH RESTART BUTTON OR REPLACE DIV
+        $(".ans2").html("Correct Answers: " + corAns);
+        $(".ans3").html("Incorrect Answers: " + notCorAns);
+        $(".ans4").html("Unanswered Questions: " +unAns);
+        $(".timer").remove();             // RE-ADD WITH RESTART BUTTON OR REPLACE DIV
     };
 
     $(".startMe").on("click", function() {   // start button
@@ -106,19 +102,25 @@ $(document).ready(function(){
         $(this).delay(999).queue(askMe);    // call the askMe function to populate the questions, delay until timer is onscreen
     });
 
-
     $(".ans1").on("click", function() {   // answer 1 button
         clearInterval(counter);
-        //  ansYes = 0;
+        if ((trackQ === 6) || (trackQ === 9)) {
+            ansYes = 1;
+        } else {
+            ansYes = 0;
+        }
         correctAns();                               // call the correctAns function
         $(".timer").empty();                       // blank the timer div
         $(".ans").empty();                          // blank the ans div
-  
       });
   
       $(".ans2").on("click", function() {   // answer 1 button
         clearInterval(counter);
-         // ansYes = 1;
+        if ((trackQ === 4) || (trackQ === 8) || (trackQ === 11)) {
+            ansYes = 1;
+        } else {
+            ansYes = 0;
+        }
          correctAns();                          // call the correctAns function
           $(".timer").empty();                    // blank the timer div
           $(".ans").empty();                      // blank the ans div
@@ -126,7 +128,11 @@ $(document).ready(function(){
   
       $(".ans3").on("click", function() {   // answer 1 button
         clearInterval(counter);
-          //ansYes = 0;
+        if ((trackQ === 3) || (trackQ === 5) || (trackQ === 10)) {
+            ansYes = 1;
+        } else {
+            ansYes = 0;
+        }
           correctAns();                             // call the correctAns function
           $(".timer").empty();                       // empty the timer div
           $(".ans").empty();                        // empty the ans div
@@ -134,14 +140,15 @@ $(document).ready(function(){
   
       $(".ans4").on("click", function() {   // answer 1 button
         clearInterval(counter);
-          //ansYes = 0;
+        if (trackQ === 7) {
+            ansYes = 1;
+        } else {
+            ansYes = 0;
+        }
           correctAns();                             // call the correctAns function
           $(".timer").empty();                       // empty the timer div
           $(".ans").empty();                // empty the ans div
       });
-
-
-
 
 
 });
