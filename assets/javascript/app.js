@@ -7,8 +7,6 @@ var trackQ = 2;             // variable to increment questions/answers
 
 $(document).ready(function(){ 
 
-
-
     function timeMe() {
         $(".restart").remove();
         console.log(trackQ);
@@ -19,6 +17,7 @@ $(document).ready(function(){
            // count = count-1;                                // decrement var count by 1
                 count--;    
             if (count === 0) {                          // if the count gets to 0
+                unAns++;
                 stop();
                 clearInterval(counter);                     // clearInterval
                 timeMe();                                   // call the timeMe function
@@ -29,28 +28,8 @@ $(document).ready(function(){
             $(".timer").html(count).css("color" , "black");   // show the timer in the HTML
         }
     };
-/*
-function run() {
-      clearInterval(intervalId);
-      intervalId = setInterval(decrement, 1000);
-    }
-    function decrement() {//  The decrement function.
-    number--;  //  Decrease number by one.
-    $("#show-number").html("<h2>" + number + "</h2>");  //  Show the number in the #show-number tag.
-    if (number === 0) { //  Once number hits zero...
-    stop();//  ...run the stop function.
-    alert("Time Up!"); //  Alert the user that time is up.
-      }
-    }
 
-    function stop() { //  The stop function
-    clearInterval(intervalId);//  Clears our intervalId//  We just pass the name of the interval//  to the clearInterval function.
-    }
-
-*/
-
-
-    function askMe() {                                      // function to populate the questions/answers to the HTML
+    function askMe() {             // function to populate the questions/answers to the HTML
         var currQuest = ["hold", "hold", "hold", "this is question 1", "this is question 2", "this is question 3", "this is question 4", "this is question 5", "this is question 6", "this is question 7", "this is question 8"];
         var answer1 = ["hold", "hold", "hold", "answer 1 1", "answer 1 2", "answer 1 3", "answer 1 4", "answer 1 5", "answer 1 6", "answer 1 7", "answer 1 8"];
         var answer2 = ["hold", "hold", "hold", "answer 2 1", "answer 2 2", "answer 2 3", "answer 2 4", "answer 2 5", "answer 2 6", "answer 2 7", "answer 2 8"];
@@ -64,10 +43,25 @@ function run() {
         if (trackQ === 11)
             finalScreen();
     };
-    /*
+    
     function correctAns() {
-        
-        $(".ques").html("post the correct answer");
+        if (trackQ === 4) {
+            $(".ques").html(answer1[4]);
+        } else if (trackQ === 7) {
+            $(".ques").html(answer1[7]);
+        } else if (trackQ === 2) {
+            $(".ques").html(answer2[2]);
+        } else if (trackQ === 6) {
+            $(".ques").html(answer2[6]);
+        } else if (trackQ === 9) {
+            $(".ques").html(answer2[9]);
+        } else if (trackQ === 3) {
+            $(".ques").html(answer3[3]);
+        } else if (trackQ === 8) {
+            $(".ques").html(answer3[8]);
+        } else if (trackQ === 5) {
+            $(".ques").html(answer4[5]);
+        }
         $(".timer").css("color" , "white"); 
         $(".ans").css("color" , "white"); 
         var count2 = 7;                                      // start counting from 7
@@ -89,7 +83,6 @@ function run() {
                 };
         };
     };
-    */
 
     function finalScreen() {
         $(".ques").empty();
@@ -118,17 +111,18 @@ function run() {
         notCorAns = 0;
         unAns = 0;
         };
-    
-
 
     $(".startB").on("click", function() {   // start button
         timeMe();                           // call the timeMe function to start the countdown
         $(this).delay(999).queue(askMe);    // call the askMe function to populate the questions, delay until timer is onscreen
     });
 
-
     $(".text1").on("click", function() {   // answer 1 button
-        //  ansYes = 0;
+        if ((trackQ === 4) || (trackQ === 7)) {
+            ansYes = 1;
+        } else {
+            ansYes = 0;
+        }
         correctAns();                               // call the correctAns function
         $(".timer").empty();                       // blank the timer div
         $(".ans").empty();                          // blank the ans div
@@ -136,21 +130,33 @@ function run() {
       });
   
       $(".text2").on("click", function() {   // answer 1 button
-         // ansYes = 1;
+        if ((trackQ === 2) || (trackQ === 6) || (trackQ === 9)) {
+            ansYes = 1;
+        } else {
+            ansYes = 0;
+        }
          correctAns();                          // call the correctAns function
           $(".timer").empty();                    // blank the timer div
           $(".ans").empty();                      // blank the ans div
       });
   
       $(".text3").on("click", function() {   // answer 1 button
-          //ansYes = 0;
+        if ((trackQ === 3) || (trackQ === 8)) {
+            ansYes = 1;
+        } else {
+            ansYes = 0;
+        }
           correctAns();                             // call the correctAns function
           $(".timer").empty();                       // empty the timer div
           $(".ans").empty();                        // empty the ans div
       });
   
       $(".text4").on("click", function() {   // answer 1 button
-          //ansYes = 0;
+        if (trackQ === 5) {
+            ansYes = 1;
+        } else {
+            ansYes = 0;
+        }
           correctAns();                             // call the correctAns function
           $(".timer").empty();                       // empty the timer div
           $(".ans").empty();                // empty the ans div
