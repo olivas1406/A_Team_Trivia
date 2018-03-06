@@ -45,7 +45,14 @@ h1 {
     font-size: 20px;
 }
 
-
+.restart {
+    text-align: center;
+    max-width: 15%;
+    background: purple;
+    color: white;
+    margin: 18% auto;
+    border-radius: 25px;
+}
 
 
 

@@ -7,26 +7,50 @@ var trackQ = 2;             // variable to increment questions/answers
 
 $(document).ready(function(){ 
 
+
+
     function timeMe() {
+        $(".restart").remove();
         console.log(trackQ);
         trackQ++;
-        var count = 10;                                      // start counting from 30, 8 for testing
-        var counter=setInterval(timer, 1000);               // set interval to 1 second
+        var count = 4;                                      // start counting from 30, 8 for testing
+        var counter = setInterval(timer, 1000);               // set interval to 1 second
         function timer() {                                  // timer function
-            count = count-1;                                // decrement var count by 1
-                if (count === 0) {                          // if the count gets to 0
+           // count = count-1;                                // decrement var count by 1
+                count--;    
+            if (count === 0) {                          // if the count gets to 0
+                stop();
                 clearInterval(counter);                     // clearInterval
                 timeMe();                                   // call the timeMe function
                 askMe();                                    // call the askMe function
               //  correctAns();
-                $(".timer").css("color" , "white");         // blank the timer div
+                $(".timer").html("0");         // blank the timer div
                 }
             $(".timer").html(count).css("color" , "black");   // show the timer in the HTML
         }
     };
+/*
+function run() {
+      clearInterval(intervalId);
+      intervalId = setInterval(decrement, 1000);
+    }
+    function decrement() {//  The decrement function.
+    number--;  //  Decrease number by one.
+    $("#show-number").html("<h2>" + number + "</h2>");  //  Show the number in the #show-number tag.
+    if (number === 0) { //  Once number hits zero...
+    stop();//  ...run the stop function.
+    alert("Time Up!"); //  Alert the user that time is up.
+      }
+    }
+
+    function stop() { //  The stop function
+    clearInterval(intervalId);//  Clears our intervalId//  We just pass the name of the interval//  to the clearInterval function.
+    }
+
+*/
+
 
     function askMe() {                                      // function to populate the questions/answers to the HTML
-        
         var currQuest = ["hold", "hold", "hold", "this is question 1", "this is question 2", "this is question 3", "this is question 4", "this is question 5", "this is question 6", "this is question 7", "this is question 8"];
         var answer1 = ["hold", "hold", "hold", "answer 1 1", "answer 1 2", "answer 1 3", "answer 1 4", "answer 1 5", "answer 1 6", "answer 1 7", "answer 1 8"];
         var answer2 = ["hold", "hold", "hold", "answer 2 1", "answer 2 2", "answer 2 3", "answer 2 4", "answer 2 5", "answer 2 6", "answer 2 7", "answer 2 8"];
@@ -46,23 +70,24 @@ $(document).ready(function(){
         $(".ques").html("post the correct answer");
         $(".timer").css("color" , "white"); 
         $(".ans").css("color" , "white"); 
-        var count = 7;                                      // start counting from 30, 6 for testing
-        var counter=setInterval(timer, 1000);               // set interval to 1 second
+        var count2 = 7;                                      // start counting from 7
+        var counter2 = setInterval(timer, 1000);               // set interval to 1 second
         function timer() {                                  // timer function
-            count = count-1;                                // decrement var count by 1
+            count2 = count2-1;                                // decrement var count by 1
                 if (count === 0) {                          // if the count gets to 0
-                clearInterval(counter);                     // clearInterval
+                stop();
+                    clearInterval(counter2);                     // clearInterval
                 timeMe();                                   // call the timeMe function
                 $(this).delay(999).queue(askMe);            // call the askMe function
-                }
+                };
                 if (ansYes === 0) {
                     notCorAns++;
                 } else if (ansYes === 1) {
                     corAns++;
                 } else {
                     unAns++;
-                }
-        }
+                };
+        };
     };
     */
 
@@ -72,8 +97,29 @@ $(document).ready(function(){
         $(".text2").html("Incorrect Answers: " + notCorAns);
         $(".text3").html("Unanswered Questions: " +unAns);
         $(".text4").empty();
-        $(".timer").empty();
+        $(".timer").remove();  // need to addclass 'timer' in start button for restart
+                                // need to add RESTART button
+
+        $(".r1c1").addClass("restart");
+        $(".restart").html("RESTART");
+        $(".restart").on("click", function() {   // restart button
+        alert("you clicked restart")  
+        restartMe();
+        });
     };
+    
+        function restartMe() {
+        timeMe();                           // call the timeMe function to start the countdown
+        $(this).delay(999).queue(askMe);    // call the askMe function to populate the questions, delay until timer is onscreen
+        $(".r2c1").addClass("timer");
+        var trackQ = 2;  
+        ansyes = 9;
+        corAns = 0;
+        notCorAns = 0;
+        unAns = 0;
+        };
+    
+
 
     $(".startB").on("click", function() {   // start button
         timeMe();                           // call the timeMe function to start the countdown
@@ -111,7 +157,5 @@ $(document).ready(function(){
       });
 
 
-
-
-
 });
+
