@@ -45,8 +45,9 @@ h1 {
 .ques {
     text-align: center;
     font-size: 26px;
-    color: white;
-    text-shadow: 2px 2px black;
+    color: black;
+    text-shadow: 2px 2px white;
+    max-width: 35%;;
     
 }
 
@@ -54,9 +55,10 @@ h1 {
     font-size: 18px;
     text-align: center;
     margin: 2% 0 2% 0;
-    color: white;
-    text-shadow: 2px 2px black;
+    color: black;
+    text-shadow: 2px 2px white;
     background: white;
+    
     
 }
 

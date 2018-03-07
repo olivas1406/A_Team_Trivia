@@ -129,8 +129,8 @@ $(document).ready(function(){
     //    clearInterval(counterCor);      
         $(".ques").remove();             // RE-ADD WITH RESTART BUTTON OR REPLACE DIV
         $(".ans1").remove();             // RE-ADD WITH RESTART BUTTON OR REPLACE DIV
-        $(".ans2").html("Correct Answers: " + notcorAns);                  // Show how many questions were answered correctly
-        $(".ans3").html("Incorrect Answers: " + corAns);             // Show how many questions were answered incorrectly
+        $(".ans2").html("Correct Answers: " + corAns);                  // Show how many questions were answered correctly
+        $(".ans3").html("Incorrect Answers: " + notCorAns);             // Show how many questions were answered incorrectly
         $(".ans4").html("Unanswered Questions: " +unAns);               // Show how many questions timed out
         $(".timer").remove();             // RE-ADD WITH RESTART BUTTON OR REPLACE DIV
     };
