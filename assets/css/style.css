@@ -3,9 +3,9 @@
 }
 
 body {
-    background-image: url("../images/bg2.jpg");
+    background-image: url("../images/a3.png");
+    background-repeat: no-repeat;
     background-size: 100%;
-    
 }
 
 .container {
@@ -45,10 +45,8 @@ h1 {
 .ques {
     text-align: center;
     font-size: 26px;
-    color: black;
-    text-shadow: 2px 2px white;
-   
-    
+    color: red;
+    text-shadow: 1px 1px black;
 }
 
 .swer {
@@ -58,8 +56,8 @@ h1 {
     color: black;
     text-shadow: 2px 2px white;
     background: white;
-    
-    
+    width: 40%;
+    margin-left: 30%;
 }
 
 
