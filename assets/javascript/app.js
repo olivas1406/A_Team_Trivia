@@ -11,7 +11,7 @@ $(document).ready(function(){
     var corAns = 0;                                                                     // Variable for Correctly answered questions
     var notCorAns = 0;                                                                  // Variable for Incorrectly answered questions
     var ansYes = 0;                                                                     // Variable to determine answers
-    var trackQ = 0;                                                                     // Variable to track the question number
+    var trackQ = 8;                                                                     // Variable to track the question number
     var corrCountUsed = 0;                                                              // Variable to determine counter use
     var timeCountUsed = 0;                                                              // Variable to determine counter use
 
@@ -245,23 +245,6 @@ $(document).ready(function(){
     });
 });
 
-
-
-/*
-$(".ans1").on("click", function() {                                                     // Start button
-$(".ans1").text("RESET");                                                               // Hide the Start button after pressing it
-timeMe();                                                                               // Call the timeMe function to start the countdown
-$(this).delay(999).queue(askMe);                                                        // Call the askMe function to populate the questions, delay until timer is onscreen
-var unAns = 0;                                                                          // Reset variables
-var corAns = 0;                                                                         // Reset variables
-var notCorAns = 0;                                                                      // Reset variables
-var ansYes = 0;                                                                         // Reset variables
-var trackQ = 0;                                                                         // Reset variables
-$(".timer").show();
-$(".ques").show();
-});
-
-*/
 
 
 
