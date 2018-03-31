@@ -11,7 +11,7 @@ $(document).ready(function(){
     var corAns = 0;                                                                     // Variable for Correctly answered questions
     var notCorAns = 0;                                                                  // Variable for Incorrectly answered questions
     var ansYes = 0;                                                                     // Variable to determine answers
-    var trackQ = 8;                                                                     // Variable to track the question number
+    var trackQ = 0;                                                                     // Variable to track the question number
     var corrCountUsed = 0;                                                              // Variable to determine counter use
     var timeCountUsed = 0;                                                              // Variable to determine counter use
 
