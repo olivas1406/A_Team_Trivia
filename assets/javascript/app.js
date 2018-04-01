@@ -33,6 +33,10 @@ $(document).ready(function(){
     function askMe() {                                                                  // Function to populate the questions/answers to the HTML
         $(".useMe").hide();
         $(".ques").html(JSON.stringify(currQuest[trackQ]))                              // The questions
+        $(".ques").css({
+            "background-color": "white",
+            "border": "solid 1px black"
+        });
         $(".ans1").html(JSON.stringify(answer1[trackQ]));                               // Answer 1
         $(".ans2").html(JSON.stringify(answer2[trackQ]));                               // Answer 2
         $(".ans3").html(JSON.stringify(answer3[trackQ]));                               // Answer 3
@@ -42,13 +46,7 @@ $(document).ready(function(){
                 finalScreen();                                                          // Call the finalScreen function
     };
 
-    function timedOut() {                                                               // Function for Unaswered questions
-        $(".useMe").show();
-        timeCountUsed = 1
-        trackQ++;                                                                       // Increment var trackQ (question tracker) by 1
-        unAns++;                                                                        // Increment var unAns (Unaswered questions) by 1
-        $(".swer").css("border", "none");                                               // Remove the border from the answers
-        $(".ques").html("Time's Up!");                                                  // Push "time's up" to the HTML
+    function answerMe(){
         if (trackQ === 1) {                                                             // Tracking correct answers in the array
             $(".useMe").html("The Correct Answer is " + answer4[0]).append("<br><br><img class='popImg' src='./assets/images/a2.jpg'/>");
             $(".useMe").css("padding", "2%");                                            // Add padding to the picture
@@ -81,6 +79,16 @@ $(document).ready(function(){
         $(".ans2").empty();                                                             // Remove answer 2 from the HTML
         $(".ans3").empty();                                                             // Remove answer 3 from the HTML
         $(".ans4").empty();                                                             // Remove answer 4 from the HTML
+    };
+
+    function timedOut() {                                                               // Function for Unaswered questions
+        $(".useMe").show();
+        timeCountUsed = 1
+        trackQ++;                                                                       // Increment var trackQ (question tracker) by 1
+        unAns++;                                                                        // Increment var unAns (Unaswered questions) by 1
+        $(".swer").css("border", "none");                                               // Remove the border from the answers
+        $(".ques").html("Time's Up!");                                                  // Push "time's up" to the HTML
+        answerMe();
         $(".timer").css("color", "white");                                              // Remove the timer from the HTML
         counterCor = 0;                                                                 // This exists in case correctAns() is never called
         countOut = 5;                                                                   // Count how long to show these values
@@ -101,39 +109,12 @@ $(document).ready(function(){
         trackQ++;                                                                       // Increment the question tracker
         console.log("Correct: " + corAns, "Wrong: " + notCorAns, "TrackQ: " + trackQ, "ansYes: " + ansYes);
         $(".ques").empty();                                                             // Removes the question from the HTML 
+        $(".ques").css({
+            "background": "none",
+            "border": "none"
+        });
         $(".swer").css("border", "none");                                               // Remove the border from the answers
-        if (trackQ === 1) {                                                             // Tracking correct answers in the array
-            $(".useMe").html("The Correct Answer is " + answer4[0]).append("<br><br><img class='popImg' src='./assets/images/a2.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        } else if (trackQ === 2) {
-            $(".useMe").html("The Correct Answer is " + answer2[1]).append("<br><br><img class='popImg' src='./assets/images/a5.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        } else if (trackQ === 3) {
-            $(".useMe").html("The Correct Answer is " + answer2[2]).append("<br><br><img class='popImg' src='./assets/images/murdock.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        } else if (trackQ === 4) {
-            $(".useMe").html("The Correct Answer is " + answer4[3]).append("<br><br><img class='popImg' src='./assets/images/a4.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        } else if (trackQ === 5) {
-            $(".useMe").html("The Correct Answer is " + answer2[4]).append("<br><br><img class='popImg' src='./assets/images/a1.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        } else if (trackQ === 6) {      
-            $(".useMe").html("The Correct Answer is " + answer1[5]).append("<br><br><img class='popImg' src='./assets/images/a7.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        } else if (trackQ === 7) {
-            $(".useMe").html("The Correct Answer is " + answer3[6]).append("<br><br><img class='popImg' src='./assets/images/bg.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        } else if (trackQ === 8) {
-            $(".useMe").html("The Correct Answer is " + answer3[7]).append("<br><br><img class='popImg' src='./assets/images/a8.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        } else if (trackQ === 9) {
-            $(".useMe").html("The Correct Answer is " + answer2[8]).append("<br><br><img class='popImg' src='./assets/images/avan.jpg'/>");
-            $(".useMe").css("padding", "2%");                                            // Add padding to the picture
-        }
-        $(".ans1").empty();
-        $(".ans2").empty();                                                             // Remove answer 2 from the HTML
-        $(".ans3").empty();                                                             // Remove answer 3 from the HTML
-        $(".ans4").empty();                                                             // Remove answer 4 from the HTML
+        answerMe();
         $(".timer").html("0");                                                          // Remove the timer from the HTML
         counterOut = 0;                                                                 // This exists in case timedOut() is never called
         countCor = 5;                                                                   // Timer for showing these values
@@ -184,6 +165,12 @@ $(document).ready(function(){
         stopMe();
     };
 
+    function cssMe(){
+        correctAns();                                                                   // Call the correctAns function
+        $(".timer").css("color", "white");                                              // Remove the timer from the HTML
+        $(".ans").empty();                                                              // Remove the answers from the HTML
+    }
+
     function stopMe() {
         event.stopPropagation();
     }
@@ -203,9 +190,7 @@ $(document).ready(function(){
         } else {                                                                    
             ansYes = 0;                                                                 // Set var ansYes to 0
         }
-        correctAns();                                                                   // Call the correctAns function
-        $(".timer").css("color", "white");                                              // Remove the timer from the HTML
-        $(".ans").empty();                                                              // Remove the answers from the HTML
+        cssMe();
     });
 
     $(".ans2").on("click", function() {                                                 // Answer 2 button
@@ -215,9 +200,7 @@ $(document).ready(function(){
         } else {                                                                    
             ansYes = 0;                                                                 // Set var ansYes to 0
         }
-        correctAns();                                                                   // Call the correctAns function
-        $(".timer").css("color", "white");                                              // Remove the timer from the HTML
-        $(".ans").empty();                                                              // Remove the answers from the HTML
+        cssMe();
     });
 
     $(".ans3").on("click", function() {                                                 // Answer 3 button
@@ -227,9 +210,7 @@ $(document).ready(function(){
         } else {                                                                  
             ansYes = 0;                                                                 // Set var ansYes to 0
         }
-        correctAns();                                                                   // Call the correctAns function
-        $(".timer").css("color", "white");                                              // Remove the timer from the HTML
-        $(".ans").empty();                                                              // Remove the answers from the HTML
+        cssMe();
     });
 
     $(".ans4").on("click", function() {                                                 // Answer 4 button
@@ -239,9 +220,7 @@ $(document).ready(function(){
         } else {
             ansYes = 0;                                                                 // Set var ansYes to 0
         }
-        correctAns();                                                                   // Call the correctAns function
-        $(".timer").css("color", "white");                                              // Remove the timer from the HTML
-        $(".ans").empty();                                                              // Remove the answers from the HTML
+        cssMe();
     });
 });
 
