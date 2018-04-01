@@ -1,4 +1,8 @@
-# TriviaGame
+<h1 align="center">
+A-Team Trivia
+</h1>
+
+***
 
 This is A-Team trivia - Hannibal, Murdock, Face, and BA!!! - useful for testing your A-Team knowledge.
 
