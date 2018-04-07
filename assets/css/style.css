@@ -21,6 +21,10 @@ body {
     border-radius: 30px;
 }
 
+.sB {
+    cursor: pointer;
+}
+
 h1 {
     font-family: 'Abril Fatface', cursive;
     text-align: center;
@@ -71,6 +75,7 @@ h1 {
     margin-left: 30%;
     border-radius: 35px;
     font-family: 'IBM Plex Mono', monospace;
+    cursor: pointer;
 }
 
 .useMe {
