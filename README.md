@@ -7,7 +7,7 @@ A-Team Trivia
 This is A-Team trivia - Hannibal, Murdock, Face, and BA!!! - useful for testing your A-Team knowledge.
 
 ---
-[CLICK ME to see it in action](https://olivas1406.github.io/TriviaGame/)
+[CLICK ME to see it in action](https://olivas1406.github.io/A_Team_Trivia/)
 <br><br>
 ---
 ![A Team Triva Screen Cap](./ateam.png)
