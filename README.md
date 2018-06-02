@@ -1,22 +1,24 @@
-<h1 align="center">
+
+#
+<h1>
+<p align="center">
 A-Team Trivia
+</p>
 </h1>
 
-***
+### This is A-Team trivia - Hannibal, Murdock, Face, and BA!!! - useful for testing your A-Team knowledge.
 
-This is A-Team trivia - Hannibal, Murdock, Face, and BA!!! - useful for testing your A-Team knowledge.
+---
+<br>
 
-This page was created and is maintained by Daniel Olivas, to get help: 
- 
-             
-  president@computersoluciones.us
-              
+![A-Team Trivia Screen Cap](./alley.png)
+<br><br>
+<hr>
+This Project was developed and is maintained by Daniel Olivas, to get help: 
 
-  https://www.linkedin.com/in/daniel-olivas/
-              
-              
+me@danielolivas.net
 
-
+danielolivas.net
 
 
 
