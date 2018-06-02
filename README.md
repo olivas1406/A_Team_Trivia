@@ -12,11 +12,7 @@ A-Team Trivia
 
 [CLICK ME to see it in action](https://olivas1406.github.io/A_Team_Trivia/)
 <br><br>
-![A-Team Triv
-
----
-
-ia Screen Cap](./ateam.png)
+![A-Team Trivia Screen Cap](./ateam.png)
 <br><br>
 
 ---
