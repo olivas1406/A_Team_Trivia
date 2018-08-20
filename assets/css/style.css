@@ -19,6 +19,8 @@ body {
 
 .popImg {
     border-radius: 30px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+
 }
 
 .sB {
@@ -47,6 +49,8 @@ h1 {
     height: 35px;
     border-radius: 35px;
     border: red solid 1px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+
 }
 
 .timer {
@@ -70,6 +74,7 @@ h1 {
     margin: 2% 0 2% 0;
     color: black;
     text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
     background: white;
     width: 40%;
     margin-left: 30%;
@@ -87,5 +92,6 @@ h1 {
     text-align: center;
     border: solid 1px red;
     border-radius: 20px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
 }
 
