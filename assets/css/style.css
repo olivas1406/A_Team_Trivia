@@ -9,7 +9,6 @@ body {
 }
 
 .container {
-    
     padding: 2%;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -20,7 +19,6 @@ body {
 .popImg {
     border-radius: 30px;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
-
 }
 
 .sB {
